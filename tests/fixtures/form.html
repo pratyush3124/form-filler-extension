@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Form Filler fixture</title>
+<style>body{font:15px system-ui;max-width:520px;margin:30px auto}label{display:block;margin:12px 0 2px}input,select,textarea{width:100%;padding:6px;box-sizing:border-box}button{margin-top:14px;padding:8px 14px}h2{margin-top:40px}</style></head>
+<body>
+<h2>1. Plain form (submit event)</h2>
+<form id="plain" onsubmit="event.preventDefault(); document.getElementById('out').textContent='submitted plain form'">
+  <label for="fn">First name</label><input id="fn" name="firstName">
+  <label for="ln">Last name</label><input id="ln" name="lastName">
+  <label for="em">Email</label><input id="em" name="email" type="email">
+  <label for="ph">Phone</label><input id="ph" name="phone" type="tel">
+  <label for="pc">Pincode</label><input id="pc" name="pincode">
+  <label for="co">Country</label><select id="co" name="country"><option value="">Choose…</option><option>India</option><option>United States</option></select>
+  <fieldset><legend>Preferred contact</legend>
+    <label><input type="radio" name="contact"> Email</label>
+    <label><input type="radio" name="contact"> Phone</label>
+    <label><input type="radio" name="contact"> Post</label>
+  </fieldset>
+  <fieldset><legend>Hobbies</legend>
+    <label><input type="checkbox" name="hobby"> Reading</label>
+    <label><input type="checkbox" name="hobby"> Sports</label>
+    <label><input type="checkbox" name="hobby"> Music</label>
+  </fieldset>
+  <label><input type="checkbox" name="terms"> I agree to the terms</label>
+  <label for="dob">Date of birth</label><input id="dob" name="dob" type="date">
+  <label for="pw">Password (never stored)</label><input id="pw" name="password" type="password">
+  <label for="cc">Card number (never stored)</label><input id="cc" name="cardNumber" autocomplete="cc-number">
+  <button>Submit</button>
+</form>
+
+<h2>2. SPA-style form (no &lt;form&gt;, click handler, injected later)</h2>
+<div id="spa"></div>
+<p id="out" style="color:#080"></p>
+
+<script>
+  // Inject the second form after load, with no <form> element and no submit event.
+  setTimeout(() => {
+    document.getElementById('spa').innerHTML = `
+      <label>Email address</label><input id="spaEmail" name="user_email">
+      <label>Company name</label><input id="spaCo" name="company">
+      <label>Favourite colour</label><input id="spaFav" name="fav_colour">
+      <button id="spaBtn" type="button">Save</button>`;
+    document.getElementById('spaBtn').addEventListener('click', () => {
+      document.getElementById('out').textContent = 'submitted spa form';
+    });
+  }, 300);
+</script>
+</body></html>

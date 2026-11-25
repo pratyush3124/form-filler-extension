@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Form Filler</title><link rel="stylesheet" href="ui.css">
+<style>body{width:290px;padding:14px}h1{font-size:15px;margin:0 0 10px}label.t{display:flex;gap:8px;align-items:center;margin:8px 0}.host{font-weight:600;word-break:break-all}button{width:100%;margin-top:10px}</style>
+</head><body>
+<h1>Form Filler</h1>
+<label class="t"><input type="checkbox" id="global"> Enabled</label>
+<label class="t" id="siteRow"><input type="checkbox" id="site"> <span>Enabled on <span class="host" id="host"></span></span></label>
+<p class="muted" id="note" hidden>Not available on this page.</p>
+<button id="manage">Manage saved values…</button>
+<script src="popup.js"></script>
+</body></html>

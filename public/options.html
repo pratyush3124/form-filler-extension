@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Form Filler — Saved values</title><link rel="stylesheet" href="ui.css">
+<style>
+main{max-width:860px;margin:0 auto;padding:24px 20px 60px}
+h1{font-size:20px;margin:0 0 4px} h2{font-size:15px;margin:28px 0 8px}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:16px 0}
+.toolbar input[type=search]{flex:1;min-width:200px}
+.field{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0}
+.field header{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.field .name{font-weight:600}
+.badge{font-size:11px;padding:1px 7px;border-radius:99px;border:1px solid var(--line);color:var(--muted)}
+.badge.g{color:var(--accent);border-color:var(--accent)}
+.spacer{flex:1}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--chip);border-radius:6px;padding:3px 4px 3px 9px;max-width:100%}
+.chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:360px}
+.chip button{border:none;background:none;padding:0 6px;color:var(--muted)}
+.chip button:hover{color:var(--danger)}
+.settings{display:grid;gap:10px}
+.sites span.s{display:inline-flex;gap:4px;align-items:center;background:var(--chip);border-radius:6px;padding:2px 4px 2px 9px;margin:2px 6px 2px 0}
+.sites button{border:none;background:none;padding:0 6px}
+#msg{min-height:1.4em}
+</style></head><body><main>
+<h1>Form Filler</h1>
+<p class="muted">Values you submit in forms are stored only in this browser. Passwords, card numbers, CVV, OTPs and similar fields are never saved.</p>
+<div class="toolbar">
+  <input type="search" id="q" placeholder="Search fields or values…">
+  <button id="export">Export</button>
+  <button id="importBtn">Import</button>
+  <input type="file" id="file" accept="application/json" hidden>
+  <button id="clear" class="danger">Clear all</button>
+</div>
+<div id="msg" class="muted"></div>
+<div id="list"></div>
+<h2>Settings</h2>
+<div class="settings">
+  <label class="row"><input type="checkbox" id="enabled"> Enabled everywhere</label>
+  <label class="row">Max values kept per field <input type="number" id="max" min="1" max="100" style="width:80px"></label>
+  <div><div>Disabled sites</div><div class="sites" id="sites"></div></div>
+</div>
+<script src="options.js"></script>
+</main></body></html>
